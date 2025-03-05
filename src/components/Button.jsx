@@ -4,7 +4,6 @@ export default function Button({
   size = "default",
   ...props
 }) {
-  console.log(props.children);
   const buttonTypes = {
     default: "bg-primary-950 hover:bg-primary-800 text-primary-200",
     outline:

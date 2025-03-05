@@ -1,11 +1,26 @@
 import { FiMoreHorizontal, FiX } from "react-icons/fi";
 import Button from "./Button";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DropdownMenu({ children }) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    if (open) {
+      document.addEventListener("mousedown", onClickOutside);
+    }
+    if (!open) {
+      document.removeEventListener("mousedown", onClickOutside);
+    }
+  }, [open]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <Button type="ghost" onClick={() => setOpen(!open)}>
         {open ? (
           <FiX className="text-primary-200" />

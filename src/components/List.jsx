@@ -6,7 +6,6 @@ import Card from "./Card";
 export default function List({ id, title }) {
   const { addCard } = useCardStore();
   const cards = useCardStore((state) => state.cards[id]);
-  console.log(cards);
   const onAddCard = () => {
     addCard(id);
   };
