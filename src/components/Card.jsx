@@ -1,3 +1,4 @@
+import Button from "./Button";
 import DropdownMenu from "./DropdownMenu";
 
 export default function Card({ listId, id, text }) {
@@ -11,7 +12,9 @@ export default function Card({ listId, id, text }) {
         >
           Card Title
         </h3>
-        <DropdownMenu></DropdownMenu>
+        <DropdownMenu>
+          <Button size="small">Delete</Button>
+        </DropdownMenu>
       </header>
       <p
         className="text-primary-200"
